@@ -1,0 +1,53 @@
+---
+layout: none
+permalink: /404.html
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page Not Found | EctivePro</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+      color: #fff;
+      text-align: center;
+    }
+    h1 {
+      font-size: 6rem;
+      margin: 0;
+    }
+    p {
+      font-size: 1.2rem;
+      margin: 1rem 0 2rem;
+    }
+    a {
+      display: inline-block;
+      padding: 0.8rem 1.5rem;
+      background: #e63946;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    a:hover {
+      background: #d62828;
+    }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>Oops! The page you’re looking for doesn’t exist.</p>
+  <a href="{{ '/' | relative_url }}">Go Back Home</a>
+</body>
+</html>
