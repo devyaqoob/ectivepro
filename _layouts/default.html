@@ -1,45 +1,101 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ page.title }} | {{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class'
+    }
+  </script>
+
+  <!-- AOS Animation CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #1d3557, #457b9d);
+    }
+    .gradient-btn {
+      background: linear-gradient(135deg, #e63946, #d62828);
+    }
+  </style>
 </head>
-<body>
-  <!-- Header / Navigation -->
-  <header class="navbar">
-    <div class="container nav-container">
-      <div class="logo">{{ site.title }}</div>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Work</a>
-        <a href="#contact" class="btn small">Contact</a>
+<body class="bg-gray-50 text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+
+  <!-- Navbar -->
+  <header class="sticky top-0 bg-white dark:bg-gray-800 shadow-md z-50 transition-colors duration-500">
+    <div class="container mx-auto flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold text-blue-900 dark:text-yellow-300">{{ site.title }}</h1>
+      <nav class="space-x-6 font-medium flex items-center">
+        <a href="#about" class="hover:text-blue-700 dark:hover:text-yellow-400">About</a>
+        <a href="#services" class="hover:text-blue-700 dark:hover:text-yellow-400">Services</a>
+        <a href="#portfolio" class="hover:text-blue-700 dark:hover:text-yellow-400">Portfolio</a>
+        <a href="#contact" class="gradient-btn text-white px-4 py-2 rounded-full">Contact</a>
+        <button id="theme-toggle" class="ml-4 text-xl">🌙</button>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container hero-container">
-      <div class="hero-text">
-        <h1>We Build <span class="highlight">Modern Websites</span> & Scalable Software</h1>
-        <p>{{ site.description }}</p>
-        <a href="#contact" class="btn">Get Started</a>
-      </div>
+  <!-- Hero -->
+  <section class="gradient-bg text-white py-24 text-center">
+    <div class="container mx-auto px-6" data-aos="fade-up">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6">
+        We Build <span class="text-yellow-300">Future-Ready</span> Websites
+      </h1>
+      <p class="text-lg md:text-xl mb-8">
+        WordPress & WooCommerce • Shopify • Custom PHP Development
+      </p>
+      <a href="#services" class="gradient-btn px-6 py-3 rounded-full text-lg font-semibold">Explore Services</a>
     </div>
   </section>
 
-  <main>
+  <!-- Page Content -->
+  <main class="container mx-auto px-6">
     {{ content }}
   </main>
 
   <!-- Footer -->
-  <footer>
-    <div class="container footer-container">
-      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
-    </div>
+  <footer class="gradient-bg text-white text-center py-6 mt-16">
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
   </footer>
+
+  <!-- AOS + Dark Mode Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    // Init AOS
+    AOS.init({ duration: 800, once: true });
+
+    // Dark Mode Toggle
+    const toggleBtn = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+
+    // Load stored theme
+    if(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+      toggleBtn.textContent = '☀️';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      if(html.classList.contains('dark')) {
+        localStorage.theme = 'dark';
+        toggleBtn.textContent = '☀️';
+      } else {
+        localStorage.theme = 'light';
+        toggleBtn.textContent = '🌙';
+      }
+    });
+  </script>
 </body>
 </html>
