@@ -7,20 +7,39 @@
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>{{ site.title }}</h1>
-      <p>{{ site.description }}</p>
-      <a href="#contact" class="btn">Get in Touch</a>
+  <!-- Header / Navigation -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">{{ site.title }}</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Work</a>
+        <a href="#contact" class="btn small">Contact</a>
+      </nav>
     </div>
   </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-container">
+      <div class="hero-text">
+        <h1>We Build <span class="highlight">Modern Websites</span> & Scalable Software</h1>
+        <p>{{ site.description }}</p>
+        <a href="#contact" class="btn">Get Started</a>
+      </div>
+    </div>
+  </section>
 
   <main>
     {{ content }}
   </main>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    <div class="container footer-container">
+      <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+    </div>
   </footer>
 </body>
 </html>
