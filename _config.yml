@@ -1,0 +1,6 @@
+title: EctivePro
+description: Professional Web Development & Software Solutions
+baseurl: "" # keep empty for custom domain
+url: "https://ectivepro.com"
+
+theme: minima # lightweight, replace if you want
